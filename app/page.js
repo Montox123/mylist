@@ -16,13 +16,19 @@ const Page = () => {
     return () => clearInterval(interval);
   }, []);
 
+  
+
   const submitHandler = (e) => {
     e.preventDefault();
+    if (!title.trim() || !desc.trim()) {
+      return;
+    }
     const currentTime = new Date().toLocaleString();
     setMainTask([...mainTask, { title, desc, completed: false, time: currentTime }]);
     setTitle("");
     setDesc("");
   };
+  
 
   const deleteHandler = (i) => {
     let copyTask = [...mainTask];
